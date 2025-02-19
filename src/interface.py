@@ -3,17 +3,11 @@ import streamlit as st
 import pandas as pd
 
 from langchain_community.utilities import SQLDatabase;
-from langchain_core.runnables import RunnableConfig
 from langchain_openai import ChatOpenAI
-from langgraph.prebuilt import InjectedStore
-from langgraph.prebuilt.chat_agent_executor import AgentState
-from langgraph.store.base import BaseStore
-from langgraph. checkpoint. memory import MemorySaver
-from langgraph.store.memory import InMemoryStore
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langgraph.prebuilt import create_react_agent
 from dotenv import load_dotenv
-import os, getpass
+import os
 
 from typing_extensions import Annotated
 
@@ -51,7 +45,7 @@ def create_agent():
     )
 
     if not os.environ.get("OPENAI_API_KEY"):
-        os.environ["OPENAI_API_KEY"] = getpass.getpass("Enter API key for OpenAI: ")
+        os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.0)
 
