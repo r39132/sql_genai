@@ -2,7 +2,7 @@ import json
 import streamlit as st
 import pandas as pd
 
-from langchain_community.utilities import SQLDatabase;
+from langchain_community.utilities import SQLDatabase
 from langchain_openai import ChatOpenAI
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langgraph.prebuilt import create_react_agent
@@ -33,14 +33,14 @@ from typing_extensions import Annotated
 def create_agent():
     load_dotenv()
 
-    mysql_uri = 'mysql+mysqlconnector://{username}:{password}@{host}:{port}/{database}'
+    mysql_uri = "mysql+mysqlconnector://{username}:{password}@{host}:{port}/{database}"
     db = SQLDatabase.from_uri(
         mysql_uri.format(
             username=os.getenv("MYSQL_USER"),
             password=os.getenv("MYSQL_PASS"),
             host=os.getenv("MYSQL_HOST"),
             port=os.getenv("MYSQL_PORT"),
-            database=os.getenv("MYSQL_DBNAME")
+            database=os.getenv("MYSQL_DBNAME"),
         )
     )
 
@@ -53,6 +53,7 @@ def create_agent():
     tools = toolkit.get_tools()
 
     from langchain import hub
+
     prompt_template = hub.pull("langchain-ai/sql-agent-system-prompt")
     assert len(prompt_template.messages) == 1
 
@@ -60,6 +61,7 @@ def create_agent():
     system_message = prompt_template.messages[0].format(dialect=db.dialect, top_k=10)
     agent = create_react_agent(llm, tools=tools, prompt=system_message)
     return agent
+
 
 def query_agent(agent, query: str):
     question_template = """For the following query, if it requires drawing a table, reply as follows:
@@ -95,14 +97,15 @@ def query_agent(agent, query: str):
     latest_message = None
     inputs = {"messages": [{"role": "user", "content": question}]}
     for step in agent.stream(inputs, stream_mode="updates"):
-        if 'agent' in step:
-            latest_message = step['agent']["messages"][-1].content
+        if "agent" in step:
+            latest_message = step["agent"]["messages"][-1].content
     print(latest_message)
     return latest_message
 
 
-def decode_response(response : str) -> dict:
+def decode_response(response: str) -> dict:
     return json.loads(response)
+
 
 def write_response(response_dict: dict):
     """
@@ -144,6 +147,7 @@ def write_response(response_dict: dict):
         df = pd.DataFrame(data["data"], columns=data["columns"])
         st.table(df)
         st.bar_chart(df, x=data["columns"][0], y=data["columns"][-1])
+
 
 if "more_stuff" not in st.session_state:
     st.session_state.more_stuff = False
