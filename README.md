@@ -86,6 +86,8 @@ Here are some screenshots showing interactions with the Text-to-SQL agent:
 <img width="620" alt="Screenshot 2025-02-18 at 10 06 56 PM" src="https://github.com/user-attachments/assets/3107c761-4b97-4730-ae7c-711754a342d5" />
 <img width="605" alt="Screenshot 2025-02-18 at 10 25 06 PM" src="https://github.com/user-attachments/assets/30c766df-e772-48bf-8266-46ab01fcf48c" />
 <img width="618" alt="Screenshot 2025-02-18 at 10 27 33 PM" src="https://github.com/user-attachments/assets/b92bb371-c202-461d-93dd-09cf3bef80ea" />
+<img width="598" alt="Screenshot 2025-02-18 at 10 31 32 PM" src="https://github.com/user-attachments/assets/d14bd744-57a7-426e-a02b-c0350469ba0b" />
+<img width="641" alt="Screenshot 2025-02-18 at 10 34 05 PM" src="https://github.com/user-attachments/assets/c51a84ea-139f-4a9d-bf24-4418838bcc37" />
 
 
 ### 2. Text-to-SQL Agent via Python Notebook
