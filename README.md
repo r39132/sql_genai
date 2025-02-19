@@ -82,7 +82,7 @@ This Agent uses the [SQLDatabase Toolkit](https://python.langchain.com/docs/inte
     ```
 
 Here are some screenshots showing interactions with the Text-to-SQL agent:
-
+<img width="634" alt="Screenshot 2025-02-18 at 10 47 45 PM" src="https://github.com/user-attachments/assets/9493cb6a-158b-4b28-98c7-7b831521b623" />
 <img width="620" alt="Screenshot 2025-02-18 at 10 06 56 PM" src="https://github.com/user-attachments/assets/3107c761-4b97-4730-ae7c-711754a342d5" />
 <img width="605" alt="Screenshot 2025-02-18 at 10 25 06 PM" src="https://github.com/user-attachments/assets/30c766df-e772-48bf-8266-46ab01fcf48c" />
 <img width="618" alt="Screenshot 2025-02-18 at 10 27 33 PM" src="https://github.com/user-attachments/assets/b92bb371-c202-461d-93dd-09cf3bef80ea" />
