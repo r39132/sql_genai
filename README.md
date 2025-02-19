@@ -46,10 +46,12 @@ SQL GenAI is a simple Python library to understand the langgraph sql agent that 
       MYSQL_HOST=localhost
       MYSQL_PORT=3306
       MYSQL_DBNAME=Chinook
+      OPENAI_API_KEY=<create your key on https://platform.openai.com/api-keys>
     ```
 
 4. __Load a demo dataset into MySQL__
     1. For demo purposes, I used [Chinook](https://github.com/lerocha/chinook-database), a popular dataset referenced in langchain demos. I have already downloaded a [release](https://github.com/lerocha/chinook-database/releases) for MySQL to this repo.
+    2. The data set has artists, albums, tracks, and invoices, customers, and employees for stores selling albums.
     1. Log into MySQL
         ```bash
           mysql -u root -p
@@ -58,17 +60,43 @@ SQL GenAI is a simple Python library to understand the langgraph sql agent that 
         ```mysql
           source Chinook_MySql.sql
         ```
+    1. __Datamodel__ 
+        ![image](https://github.com/user-attachments/assets/e7c28796-10bf-4e66-a2c4-200fe9705c70)
+
+
 ----
 
 ## Usage
-This project has the following components:
-1. SQL Query Agent available in a Jupyter notebook, where each cell can be executed in a sequence. This provides more detailed interactions with the SQL agent
-1. SQL Query Agent integrated into streamlit web app, which can be run using the following command:
+This project has the 3 components:
+### 1. Text-to-SQL Agent with Web Interface
+This Agent uses the [SQLDatabase Toolkit](https://python.langchain.com/docs/integrations/tools/sql_database/) to
+1. Understand the database tables and their schemas (i.e. structure)
+2. Reason about which tables and columns can answer the query!
+3. Convert user natural language prompts into SQL queries!
+4. Executes the query!
+5. Return results in natural language, displaying results as a table and graph!
+    
+ To play with the Web UI, run
     ```bash
       streamlit run src/interface.py
     ```
-1. SQL DML Agent that is able to insert data into the database. This is also available as a jupyter notebook
+
+Here are some screenshots showing interactions with the Text-to-SQL agent:
+
+<img width="620" alt="Screenshot 2025-02-18 at 10 06 56 PM" src="https://github.com/user-attachments/assets/3107c761-4b97-4730-ae7c-711754a342d5" />
+<img width="605" alt="Screenshot 2025-02-18 at 10 25 06 PM" src="https://github.com/user-attachments/assets/30c766df-e772-48bf-8266-46ab01fcf48c" />
+<img width="618" alt="Screenshot 2025-02-18 at 10 27 33 PM" src="https://github.com/user-attachments/assets/b92bb371-c202-461d-93dd-09cf3bef80ea" />
+
+
+### 2. Text-to-SQL Agent via Python Notebook
+SQL Query Agent available in a Jupyter notebook, where each cell can be executed in a sequence. 
+
+### 3. Text-to-SQL Chatbot via Python Notebook
+SQL Query Chatbot available in a Jupyter notebook, where each cell can be executed in a sequence. 
+
+### 4. DDL to populate tables with dummy Python Notebook
+SQL DDL Agent available in a Jupyter notebook to add dummy data to existing tables.
 
 ## Next Steps
-1. Update project to be more interfactive and create a more interactive chat interface with context to allow the user to ask questions based on the response of the SQL agent.
+1. Update project remember context across prompts
 
