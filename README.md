@@ -63,12 +63,12 @@ SQL GenAI is a simple Python library to understand the langgraph sql agent that 
 ## Usage
 This project has the following components:
 1. SQL Query Agent available in a Jupyter notebook, where each cell can be executed in a sequence. This provides more detailed interactions with the SQL agent
-2. SQL Query Agent integrated into streamlit web app, which can be run using the following command:
-```bash
-streamlit run src/interface.py
-```
-3. SQL DML Agent that is able to insert data into the database. This is also available as a jupyter notebook
+1. SQL Query Agent integrated into streamlit web app, which can be run using the following command:
+    ```bash
+      streamlit run src/interface.py
+    ```
+1. SQL DML Agent that is able to insert data into the database. This is also available as a jupyter notebook
 
 ## Next Steps
-The langgraph agent used here is a prebuilt agent. The next step would be to create an agent from scratch and replace the prebuilt agent. Also, use streamlit to create a more interactive chat interface with context to allow the user to ask questions based on the response of the SQL agent.
+1. Update project to be more interfactive and create a more interactive chat interface with context to allow the user to ask questions based on the response of the SQL agent.
 
