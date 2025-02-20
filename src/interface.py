@@ -11,15 +11,17 @@ from dotenv import load_dotenv
 import os
 
 def create_agent(debug: bool = False):
-    mysql_uri = 'mysql+mysqlconnector://{username}:{password}@{host}:{port}/{database}'
+    mysql_uri = '{dialect}+{driver}://{username}:{password}@{host}:{port}/{database}'
 
     db = SQLDatabase.from_uri(
         mysql_uri.format(
-            username=os.getenv("MYSQL_USER"),
-            password=os.getenv("MYSQL_PASS"),
-            host=os.getenv("MYSQL_HOST"),
-            port=os.getenv("MYSQL_PORT"),
-            database=os.getenv("MYSQL_DBNAME"),
+            dialect=os.getenv("DB_DIALECT"),
+            driver=os.getenv("DB_DRIVER"),
+            username=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASS"),
+            host=os.getenv("DB_HOST"),
+            port=os.getenv("DB_PORT"),
+            database=os.getenv("DB_DBNAME"),
         )
     )
 

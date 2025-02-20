@@ -41,12 +41,15 @@ SQL GenAI is a simple Python library to understand the langgraph sql agent that 
     ```
 1. __Create a `.env` file to hold the following DB connection params__  
     ```
-      MYSQL_USER=root
-      MYSQL_PASS=password
-      MYSQL_HOST=localhost
-      MYSQL_PORT=3306
-      MYSQL_DBNAME=Chinook
+      DB_DIALECT=mysql
+      DB_DRIVER=mysqlconnector
+      DB_USER=root
+      DB_PASS=password
+      DB_HOST=localhost
+      DB_PORT=3306
+      DB_DBNAME=Chinook
       OPENAI_API_KEY=<create your key on https://platform.openai.com/api-keys>
+      DEBUG=<set to True to have verbose logging,set to False or omit otherwise>
     ```
 
 4. __Load a demo dataset into MySQL__
@@ -57,7 +60,7 @@ SQL GenAI is a simple Python library to understand the langgraph sql agent that 
           mysql -u root -p
         ```
     1. To import the dataset (i.e., schema and data( into the database run the following command within the MySQL shell.
-        ```mysql
+        ```bash
           source Chinook_MySql.sql
         ```
     1. __Datamodel__ 
